@@ -1,0 +1,41 @@
+
+.container-KartochkaView {
+  padding: 16px;
+
+  .opisanie-name {
+    font-size: 150%;
+    font-weight: bold;
+    padding: 6px 0;
+
+    margin: 10px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+  }
+
+  .kartochka-img {
+    padding: 8px 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  // .container-Opisanie {
+  //   font-size: 130%;
+
+  //   width: auto;
+  //   margin: 10px;
+  //   box-sizing: border-box;
+  //   border-radius: 8px;
+  //   background-color: #fff;
+  //   border: 1px solid #e2e2e2;
+  // }
+
+  .container-button-add {
+    margin-top: 16px;
+    text-align: right;
+
+  }
+}

@@ -1,0 +1,34 @@
+<div class="container-App">
+
+  <div class="container-header" >
+    <div class="container-listHeader">
+      <ul class="listHeader">
+        <li key="ul_li_home">
+          <a routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
+          >
+            <span class="normal">Католог</span>
+            <span class="bold">Католог</span>
+          </a>
+        </li>
+        <li key="ul_li_test">
+          <a routerLink="/collection" routerLinkActive="active">
+            <span class="normal">Коллекция</span>
+            <span class="bold">Коллекция</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="tema-sun" (click)="darkTema()" >☀</div>
+  </div>
+
+  <div class="container-main">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="container-footer">
+    <div>Пример работы на Angular.</div>
+  </div>
+
+</div>

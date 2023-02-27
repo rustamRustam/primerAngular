@@ -1,0 +1,47 @@
+<div class="container-CatatologKartochek" >
+  <div class="filters"
+    *ngIf="filters;"
+  >
+    <app-name class="filter-item"
+      [disabled]="dataTotalCount === -1"
+      [value]="filters.q"
+      [updateFilter]="updateFilter"
+    ></app-name>
+
+    <app-select class="filter-item"
+      [disabled]="dataTotalCount === -1"
+      [current]="filters.authorId"
+      [variants]="authorsToSelectItems()"
+      [updateFilter]="updateFilter"
+      nameFilter="authorId"
+    ></app-select>
+
+    <app-select class="filter-item"
+      [disabled]="dataTotalCount === -1"
+      [current]="filters.locationId"
+      [variants]="locationsToSelectItems()"
+      [updateFilter]="updateFilter"
+      nameFilter="locationId"
+    ></app-select>
+
+  </div>
+  <div class="pagination">
+    <app-numeraciya
+      [dataNumeraciya]="dataNumeraciya"
+      [updateFilter]="updateFilter"
+    ></app-numeraciya>
+  </div>
+
+  <app-vitrina
+    [dataTotalCount]="dataTotalCount"
+    [dataKartochkas]="dataKartochkas"
+
+  ></app-vitrina>
+
+  <div class="pagination">
+    <app-numeraciya
+      [dataNumeraciya]="dataNumeraciya"
+      [updateFilter]="updateFilter"
+    ></app-numeraciya>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.container-Numeraciya {
+  text-align: left;
+  padding-left: 40px;
+
+  .numeraciya-step {
+    display: inline-block;
+  }
+
+  .numeraciya-view {
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+    min-height: 30px;
+    min-width: 30px;
+    line-height: 30px;
+    margin-left: -1px;
+    text-align: center;
+    background-color: #fff;
+
+
+    &.is-current {
+      background-color: black;
+      color: white;
+      pointer-events: none;
+    }
+
+    &.is-disabled {
+      color: gray;
+      pointer-events: none;
+    }
+
+    &:first-child {
+      margin-left: 0;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    &:not(.is-current):hover {
+      cursor: pointer;
+      background-color: #80808088;
+    }
+  }
+}

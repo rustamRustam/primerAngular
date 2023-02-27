@@ -1,0 +1,60 @@
+
+.container-Kartochka {
+  display: inline-block;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 10px 8px;
+  box-shadow: rgba(41,72,0,.7) 0px 6px 30px;
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+
+  .kartochka-img {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    vertical-align: middle;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .kartochka-name {
+    font-weight: bold;
+    padding: 6px 0;
+  }
+
+  app-opisanie {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    transform: translateY(100%);
+
+    transition: transform 300ms ease;
+  }
+
+  &:hover app-opisanie {
+    transform: translateY(0);
+  }
+
+  .component-Button {
+    display: inline-block;
+    button {
+      text-transform: lowercase;
+      padding: 6px 8px;
+    }
+  }
+
+  .container-button-add {
+    padding-bottom: 8px;
+    text-align: right;
+  }
+
+}
+

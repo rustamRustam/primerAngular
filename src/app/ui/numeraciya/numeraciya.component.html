@@ -1,0 +1,29 @@
+<div class="container-Numeraciya"
+  *ngIf="!is_empty()"
+>
+
+  <div
+    *ngFor='let pair of start_num'
+    class="numeraciya-view {{ dataNumeraciya.currentPage === dataNumeraciya.minPage?'is-disabled':'' }}"
+    (click)="changeCurrentPage(pair[1])"
+  >
+    {{pair[0]}}
+  </div>
+
+  <div
+    *ngFor='let iter of counter()'
+    class="numeraciya-view {{ iter === dataNumeraciya.currentPage?'is-current':'' }}"
+    (click)="changeCurrentPage(iter)"
+  >
+    {{iter}}
+  </div>
+
+  <div
+    *ngFor='let pair of end_num'
+    class="numeraciya-view {{ dataNumeraciya.currentPage === dataNumeraciya.maxPage?'is-disabled':'' }}"
+    (click)="changeCurrentPage(pair[1])"
+  >
+    {{pair[0]}}
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+<div *ngIf="variants.length; else Loading"
+  tabIndex=-1
+  class="container-Select {{is_open?'opened':''}} {{disabled?'disabled':''}}"
+  (blur)="blurFocusOut()"
+>
+  <div class="select-value text_dots">
+    {{ getCurrentNameValue(current) }}
+    <div
+      class="select-button"
+      (click)="disabled ? undefined : clickOnSelectButton()"
+      (blur)="blurFocusOut()"
+    >▼</div>
+  </div>
+    <div *ngIf="is_open"
+    class="select-variants"
+  >
+  <div *ngFor='let item of variants'
+    class="select-variant text_dots "
+    (click)="clickOnSelectVariant(item.id)"
+  >
+    {{ item.idName}}
+  </div>
+
+  </div>
+
+</div>
+
+<ng-template #Loading>
+  <app-loading></app-loading>
+</ng-template>

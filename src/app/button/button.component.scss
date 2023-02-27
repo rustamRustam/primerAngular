@@ -1,0 +1,35 @@
+button {
+  font-size: inherit;
+  padding: 10px 12px;
+  background-color: #ffd426;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  line-height: 1;
+  cursor: pointer;
+
+  &.button-add {
+    color: white;
+    background-color: #911E42;
+    &:hover {
+      background-color: #dd0031;
+    }
+  }
+
+  &.button-remove {
+    color: white;
+    background-color: #008000;
+    &:hover {
+      background-color: #32CD32;
+    }
+  }
+
+  &.button-clean {
+    color: white;
+    background-color: #036fa1;
+    &:hover {
+      background-color: #05547b;
+    }
+  }
+
+}

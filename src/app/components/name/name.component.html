@@ -1,0 +1,9 @@
+<div class="container-Name {{disabled?'disabled':''}}" >
+  <input
+    type="text"
+    class="name-input"
+    value={{value}}
+    placeholder="Наименование картины"
+    (input)="onChangedValue($event)"
+  />
+</div>

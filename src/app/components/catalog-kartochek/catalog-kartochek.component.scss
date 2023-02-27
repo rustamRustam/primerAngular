@@ -1,0 +1,32 @@
+.pagination,
+.filters {
+  padding: 10px 0;
+}
+
+.filters {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
+  text-align: center;
+
+  &>.filter-item {
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+    width: calc(33% - 24px);
+    div {
+      width: 100% !important;
+      display: inline-block;
+    }
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+  .filters>.filter-item {
+    display: block;
+    width: auto;
+  }
+}

@@ -1,0 +1,19 @@
+<div *ngIf="dataKartocheka"
+  class="container-KartochkaView"
+>
+  <div class="opisanie-name">{{dataKartocheka.name}}</div>
+  <img
+    width="100%"
+    height="auto"
+    src={{dataKartocheka.imageUrl}}
+    alt={{dataKartocheka.name}}
+    class="kartochka-img"
+  />
+  <app-opisanie [props]="dataKartocheka" ></app-opisanie>
+  <div class="container-button-add">
+    <app-button_add_remove
+      [id]="dataKartocheka.id"
+      [dataKartocheka]="dataKartocheka"
+    ></app-button_add_remove>
+  </div>
+</div>

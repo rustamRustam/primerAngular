@@ -1,0 +1,40 @@
+.listHeader {
+  padding: 0;
+  margin: 0;
+  span.bold {
+    font-weight: bold;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0 4px;
+    &>a {
+      cursor: pointer;
+      position: relative;
+      box-sizing: border-box;
+      padding: 4px 20px;
+      display: inline-block;
+      text-decoration: none;
+
+      .normal {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        opacity: 1;
+      }
+      .bold {
+        opacity: 0;
+      }
+      &.active {
+        border-bottom: 3px solid black;
+        .normal {
+          opacity: 0;
+        }
+        .bold {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
