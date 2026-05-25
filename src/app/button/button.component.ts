@@ -4,9 +4,10 @@ import { CollectionService } from '../services/collection.service';
 import { TKartochka } from '../services/kartochki.service';
 
 @Component({
-  selector: 'app-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+    selector: 'app-button',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    standalone: false
 })
 export class ButtonComponent implements OnInit {
 
@@ -24,9 +25,10 @@ export class ButtonComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-button_add_remove',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+    selector: 'app-button_add_remove',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    standalone: false
 })
 export class ButtonAddRemove extends ButtonComponent {
 
@@ -76,10 +78,10 @@ export class ButtonAddRemove extends ButtonComponent {
 
 
 @Component({
-  selector: 'app-button_clean',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
-
+    selector: 'app-button_clean',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    standalone: false
 })
 export class ButtonClear extends ButtonComponent {
 

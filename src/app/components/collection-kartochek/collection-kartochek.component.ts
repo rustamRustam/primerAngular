@@ -5,9 +5,10 @@ import { TKartochka } from '../../services/kartochki.service';
 import { CollectionService } from '../../services/collection.service';
 
 @Component({
-  selector: 'app-collection-kartochek',
-  templateUrl: './collection-kartochek.component.html',
-  styleUrls: ['./collection-kartochek.component.scss']
+    selector: 'app-collection-kartochek',
+    templateUrl: './collection-kartochek.component.html',
+    styleUrls: ['./collection-kartochek.component.scss'],
+    standalone: false
 })
 export class CollectionKartochekComponent implements OnInit {
 

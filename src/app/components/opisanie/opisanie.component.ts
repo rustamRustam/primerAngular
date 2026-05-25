@@ -3,9 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TKartochka } from '../../services/kartochki.service';
 
 @Component({
-  selector: 'app-opisanie',
-  templateUrl: './opisanie.component.html',
-  styleUrls: ['./opisanie.component.scss']
+    selector: 'app-opisanie',
+    templateUrl: './opisanie.component.html',
+    styleUrls: ['./opisanie.component.scss'],
+    standalone: false
 })
 export class OpisanieComponent implements OnInit {
 

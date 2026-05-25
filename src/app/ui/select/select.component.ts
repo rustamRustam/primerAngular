@@ -12,9 +12,10 @@ export type TSelectItems = TSelectItem[];
 
 
 @Component({
-  selector: 'app-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+    selector: 'app-select',
+    templateUrl: './select.component.html',
+    styleUrls: ['./select.component.scss'],
+    standalone: false
 })
 export class SelectComponent implements OnInit {
   is_open:boolean = false;

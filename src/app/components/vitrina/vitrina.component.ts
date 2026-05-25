@@ -3,9 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TKartochka } from '../../services/kartochki.service';
 
 @Component({
-  selector: 'app-vitrina',
-  templateUrl: './vitrina.component.html',
-  styleUrls: ['./vitrina.component.scss']
+    selector: 'app-vitrina',
+    templateUrl: './vitrina.component.html',
+    styleUrls: ['./vitrina.component.scss'],
+    standalone: false
 })
 export class VitrinaComponent implements OnInit {
 

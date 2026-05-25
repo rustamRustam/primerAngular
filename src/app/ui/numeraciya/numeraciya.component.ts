@@ -9,9 +9,10 @@ export type TNumeraciya = {
 };
 
 @Component({
-  selector: 'app-numeraciya',
-  templateUrl: './numeraciya.component.html',
-  styleUrls: ['./numeraciya.component.scss']
+    selector: 'app-numeraciya',
+    templateUrl: './numeraciya.component.html',
+    styleUrls: ['./numeraciya.component.scss'],
+    standalone: false
 })
 export class NumeraciyaComponent implements OnInit {
   private _dataNumeraciya: TNumeraciya = {

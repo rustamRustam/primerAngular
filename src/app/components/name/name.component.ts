@@ -3,9 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TUpdateFilter } from '../../services/kartochki.service';
 
 @Component({
-  selector: 'app-name',
-  templateUrl: './name.component.html',
-  styleUrls: ['./name.component.scss']
+    selector: 'app-name',
+    templateUrl: './name.component.html',
+    styleUrls: ['./name.component.scss'],
+    standalone: false
 })
 export class NameComponent implements OnInit {
 

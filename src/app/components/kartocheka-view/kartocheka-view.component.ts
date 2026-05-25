@@ -7,9 +7,10 @@ import { LocationsService } from '../../services/locations.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-kartocheka-view',
-  templateUrl: './kartocheka-view.component.html',
-  styleUrls: ['./kartocheka-view.component.scss']
+    selector: 'app-kartocheka-view',
+    templateUrl: './kartocheka-view.component.html',
+    styleUrls: ['./kartocheka-view.component.scss'],
+    standalone: false
 })
 export class KartochekaViewComponent implements OnInit {
 

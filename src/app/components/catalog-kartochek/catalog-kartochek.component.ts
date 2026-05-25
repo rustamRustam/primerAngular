@@ -15,9 +15,10 @@ import { TNumeraciya } from '../../ui/numeraciya/numeraciya.component';
 import { TSelectItem, TSelectItems } from '../../ui/select/select.component';
 
 @Component({
-  selector: 'app-catalog-kartochek',
-  templateUrl: './catalog-kartochek.component.html',
-  styleUrls: ['./catalog-kartochek.component.scss']
+    selector: 'app-catalog-kartochek',
+    templateUrl: './catalog-kartochek.component.html',
+    styleUrls: ['./catalog-kartochek.component.scss'],
+    standalone: false
 })
 export class CatalogKartochekComponent implements OnInit {
 
