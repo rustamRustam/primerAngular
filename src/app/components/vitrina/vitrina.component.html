@@ -1,18 +1,17 @@
-<div class="container-Vitrina"
-  *ngIf="dataKartochkas.length; else emptyKartochkas"
->
-  <app-kartocheka
-    *ngFor="let itemKartochka of dataKartochkas"
-    [dataKartocheka]="itemKartochka"
-  ></app-kartocheka>
-</div>
-
-<ng-template #emptyKartochkas>
-  <div  *ngIf="dataTotalCount < 0; then Loading else Empty"></div>
-  <ng-template #Loading>
+@if (dataKartochkas.length) {
+  <div class="container-Vitrina"
+    >
+    @for (itemKartochka of dataKartochkas; track itemKartochka) {
+      <app-kartocheka
+        [dataKartocheka]="itemKartochka"
+      ></app-kartocheka>
+    }
+  </div>
+} @else {
+  @if (dataTotalCount < 0) {
     <app-loading></app-loading>
-  </ng-template>
-  <ng-template #Empty>
+  } @else {
     <div class="text-empty">{{ emltyText }}</div>
-  </ng-template>
-</ng-template>
+  }
+}
+
