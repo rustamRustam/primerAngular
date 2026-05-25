@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 import {
   KartochkiService,
@@ -11,20 +11,32 @@ import {
 import { AuthorsService, TDataAuthors, TAuthor } from '../../services/authors.service';
 import { LocationsService, TDataLocations, TLocation } from '../../services/locations.service';
 
-import { TNumeraciya } from '../../ui/numeraciya/numeraciya.component';
-import { TSelectItem, TSelectItems } from '../../ui/select/select.component';
+import { TNumeraciya, NumeraciyaComponent } from '../../ui/numeraciya/numeraciya.component';
+import { TSelectItem, TSelectItems, SelectComponent } from '../../ui/select/select.component';
+import { NameComponent } from "../name/name.component";
+import { VitrinaComponent } from "../vitrina/vitrina.component";
 
 @Component({
     selector: 'app-catalog-kartochek',
     templateUrl: './catalog-kartochek.component.html',
     styleUrls: ['./catalog-kartochek.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NameComponent, SelectComponent, NumeraciyaComponent, VitrinaComponent]
 })
 export class CatalogKartochekComponent implements OnInit {
 
   dataAuthors: TAuthor[] = [];
   dataLocations: TLocation[] = [];
-  dataKartochkas: TKartochka[] = [];
+  
+  private _dataKartochkas = signal<TKartochka[] | undefined>([]);
+  set dataKartochkas(value:TKartochka[] | undefined) {
+    this._dataKartochkas.set(value);
+  } 
+
+  get dataKartochkas():TKartochka[] | undefined {
+    return this._dataKartochkas();
+  }
+  
   dataTotalCount: number = -1;
   dataNumeraciya: TNumeraciya = {
     currentPage: 0,
@@ -103,7 +115,7 @@ export class CatalogKartochekComponent implements OnInit {
   setLocations(dataKartochka:TKartochka) {
     if(dataKartochka.locationId && !(dataKartochka.location) &&
       this.dataLocations && this.dataLocations.length) {
-      const _location = this.dataLocations.find(item=> item.id === dataKartochka.​​locationId);
+      const _location = this.dataLocations.find(item=> item.id === dataKartochka.locationId);
       if (_location) {
         dataKartochka.location = _location.location;
       }
@@ -111,7 +123,7 @@ export class CatalogKartochekComponent implements OnInit {
   }
 
   setAuthorsLocations() {
-    this.dataKartochkas.forEach((dataKartochka:TKartochka)=>{
+    this.dataKartochkas?.forEach((dataKartochka:TKartochka)=>{
       this.setAuthors(dataKartochka);
       this.setLocations(dataKartochka);
     });

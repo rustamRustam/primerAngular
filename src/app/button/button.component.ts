@@ -7,7 +7,7 @@ import { TKartochka } from '../services/kartochki.service';
     selector: 'app-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class ButtonComponent implements OnInit {
 
@@ -28,7 +28,7 @@ export class ButtonComponent implements OnInit {
     selector: 'app-button_add_remove',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class ButtonAddRemove extends ButtonComponent {
 
@@ -81,7 +81,7 @@ export class ButtonAddRemove extends ButtonComponent {
     selector: 'app-button_clean',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class ButtonClear extends ButtonComponent {
 

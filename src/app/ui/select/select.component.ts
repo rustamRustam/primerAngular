@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TAuthor } from '../../services/authors.service';
 import { TLocation } from '../../services/locations.service';
 import { TUpdateFilter, TKeyFilters } from '../../services/kartochki.service';
+import { LoadingComponent } from "../loading/loading.component";
 
 export type TSelectItem = {
   id: number;
@@ -15,7 +16,8 @@ export type TSelectItems = TSelectItem[];
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [LoadingComponent]
 })
 export class SelectComponent implements OnInit {
   is_open:boolean = false;

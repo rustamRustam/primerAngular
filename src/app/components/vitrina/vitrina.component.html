@@ -1,7 +1,7 @@
-@if (dataKartochkas.length) {
+@if (dataKartochkas?.length) {
   <div class="container-Vitrina"
     >
-    @for (itemKartochka of dataKartochkas; track itemKartochka) {
+    @for (itemKartochka of dataKartochkas; track itemKartochka.id) {
       <app-kartocheka
         [dataKartocheka]="itemKartochka"
       ></app-kartocheka>

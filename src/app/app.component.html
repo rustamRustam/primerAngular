@@ -4,10 +4,7 @@
     <div class="container-listHeader">
       <ul class="listHeader">
         <li key="ul_li_home">
-          <a routerLink=""
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}"
-          >
+          <a routerLink="/" routerLinkActive="active" >
             <span class="normal">Католог</span>
             <span class="bold">Католог</span>
           </a>
@@ -18,6 +15,12 @@
             <span class="bold">Коллекция</span>
           </a>
         </li>
+        <!-- <li key="ul_li_updatye">
+          <button (click)="doReRender()">ReRender</button>
+        </li> -->
+        <!-- <li key="ul_li_updatye">
+          <button (click)="rewriteBD()">Перезаписать БД</button>
+        </li> -->
       </ul>
     </div>
     <div class="tema-sun" (click)="darkTema()" >☀</div>

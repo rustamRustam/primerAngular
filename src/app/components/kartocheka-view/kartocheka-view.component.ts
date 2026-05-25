@@ -1,24 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 
 import { KartochkiService, TKartochka } from '../../services/kartochki.service';
 import { AuthorsService, TAuthor } from '../../services/authors.service';
 import { LocationsService } from '../../services/locations.service';
 import { Subscription } from 'rxjs';
+import { OpisanieComponent } from "../opisanie/opisanie.component";
+import { ButtonAddRemove } from "src/app/button/button.component";
 
 @Component({
     selector: 'app-kartocheka-view',
     templateUrl: './kartocheka-view.component.html',
     styleUrls: ['./kartocheka-view.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [OpisanieComponent, ButtonAddRemove]
 })
-export class KartochekaViewComponent implements OnInit {
+export class KartochekaViewComponent implements OnInit, OnDestroy {
 
-  dataKartocheka:TKartochka | null = null;
+  private _dataKartocheka = signal<TKartochka | undefined>(undefined);
+  set dataKartocheka(value:TKartochka) {
+    this._dataKartocheka.set(value);
+  }
+  get dataKartocheka():TKartochka | undefined {
+    return this._dataKartocheka();
+  }
   // private subscription: Subscription
   
   @Input() id:number = 0;
 
+  private subscription: Subscription | undefined;
   constructor(private activateRoute: ActivatedRoute,
               private authors:AuthorsService,
               private locations:LocationsService,
@@ -26,12 +36,21 @@ export class KartochekaViewComponent implements OnInit {
   ) {
     this.id = this.activateRoute.snapshot.params['id'];
 
-    // this.subscription = this.activateRoute.params.subscribe(
-    //   (params) => (this.id = params['id'])
-    // )
+    this.subscription = this.activateRoute.params.subscribe(
+      (params) => {
+        if(params['id']) {
+          this.id = +params['id'];
+          this.loadDataKartocheka();
+        }
+      }
+    );
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
+  private loadDataKartocheka() {
     if (this.id) {
       this.kartochki.getById(
         this.id,
@@ -58,6 +77,10 @@ export class KartochekaViewComponent implements OnInit {
         }
       );
     }
+  }
+
+  ngOnInit(): void {
+    this.loadDataKartocheka();
   }
 
 }

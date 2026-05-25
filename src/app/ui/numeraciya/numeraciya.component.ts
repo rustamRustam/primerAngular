@@ -12,7 +12,7 @@ export type TNumeraciya = {
     selector: 'app-numeraciya',
     templateUrl: './numeraciya.component.html',
     styleUrls: ['./numeraciya.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class NumeraciyaComponent implements OnInit {
   private _dataNumeraciya: TNumeraciya = {

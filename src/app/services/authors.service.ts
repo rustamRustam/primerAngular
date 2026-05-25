@@ -3,7 +3,7 @@ import { LoaderService } from './loader.service';
 
 export type TAuthor = {
   id: number;
-  ​​name: string;
+  name: string;
 };
 
 export type TDataAuthors = {
@@ -23,54 +23,94 @@ export class AuthorsService {
   constructor(private loader: LoaderService){}
 
   loadData(cb: (data:TDataAuthors)=>void ) {
-    if (!this.loading) {
-      this.loading = true;
-      this.loader.loadData<TAuthor[]>(
-        this.patch_url,
-        (response: {data: TAuthor[];} )=>{
-          const dataAuthors: TAuthor[] = [
+    this.loader.authors().then((response)=>{
+      if(response) {
+        const data = response as TAuthor[]; // Приводим тип
+        const dataAuthors: TAuthor[] = [
           {
             "id": 0,
             "name": "All Authors"
-          }].concat(response.data);
+          }].concat(data);
 
           this.dataAuthors = {
             dataAuthors: dataAuthors
           };
 
           cb(this.dataAuthors);
+      }
+    });
+  }
+
+  // loadData(cb: (data:TDataAuthors)=>void ) {
+  //   if (!this.loading) {
+  //     this.loading = true;
+  //     this.loader.loadData<TAuthor[]>(
+  //       this.patch_url,
+  //       (response: {data: TAuthor[];} )=>{
+  //         const dataAuthors: TAuthor[] = [
+  //         {
+  //           "id": 0,
+  //           "name": "All Authors"
+  //         }].concat(response.data);
+
+  //         this.dataAuthors = {
+  //           dataAuthors: dataAuthors
+  //         };
+
+  //         cb(this.dataAuthors);
+  //       }
+  //     );
+  //   } else {
+  //     cb(this.dataAuthors);
+  //   }
+  // }
+
+  private getOneBYId(id:number):boolean|TAuthor {
+    if (this.dataAuthors.dataAuthors.length) {
+      for(let dataAuthor of this.dataAuthors.dataAuthors) {
+        if(dataAuthor.id === id) {
+          return dataAuthor;
         }
-      );
-    } else {
-      cb(this.dataAuthors);
+      }
     }
+    return false;
   }
 
   getById(id:number, cb: (data:boolean|TAuthor)=>void) {
-    let result_data:boolean|TAuthor = false;
-    if (this.dataAuthors.dataAuthors.length) {
-      this.dataAuthors.dataAuthors.some((dataAuthor:TAuthor)=>{
-        if(dataAuthor.id === id) {
-          result_data = dataAuthor;
-          return true;
-        }
-        return false;
-      });
-    }
-    if(result_data) {
-      cb(result_data);
+    id = +id;
+        
+    if (!(this.dataAuthors.dataAuthors.length)) {
+      this.loadData((data:TDataAuthors)=>{
+        cb(this.getOneBYId(id));
+      })
     } else {
-      this.loader.loadData<TAuthor[]>(
-        this.patch_url+'?id='+id,
-        (response:{data: TAuthor[];})=>{
-          if (response.data.length) {
-            cb(response.data[0]);
-          } else {
-            cb(false);
-          }
-        }
-      );
+      cb(this.getOneBYId(id));
     }
+
+    // let result_data:boolean|TAuthor = false;
+    // if (this.dataAuthors.dataAuthors.length) {
+    //   this.dataAuthors.dataAuthors.some((dataAuthor:TAuthor)=>{
+    //     if(dataAuthor.id === id) {
+    //       result_data = dataAuthor;
+    //       return true;
+    //     }
+    //     return false;
+    //   });
+    // }
+    // if(result_data) {
+    //   cb(result_data);
+    // } else {
+    //   this.loader.loadData<TAuthor[]>(
+    //     this.patch_url+'?id='+id,
+    //     (response:{data: TAuthor[];})=>{
+    //       if (response.data.length) {
+    //         cb(response.data[0]);
+    //       } else {
+    //         cb(false);
+    //       }
+    //     }
+    //   );
+    // }
   }
 
 };

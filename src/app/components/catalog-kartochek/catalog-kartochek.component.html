@@ -1,7 +1,6 @@
 <div class="container-CatatologKartochek" >
-  @if (filters;) {
-    <div class="filters"
-      >
+  @if (filters) {
+    <div class="filters" >
       <app-name class="filter-item"
         [disabled]="dataTotalCount === -1"
         [value]="filters.q"
@@ -29,7 +28,6 @@
       [updateFilter]="updateFilter"
     ></app-numeraciya>
   </div>
-
   <app-vitrina
     [dataTotalCount]="dataTotalCount"
     [dataKartochkas]="dataKartochkas"

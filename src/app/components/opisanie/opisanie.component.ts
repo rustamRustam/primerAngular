@@ -6,7 +6,7 @@ import { TKartochka } from '../../services/kartochki.service';
     selector: 'app-opisanie',
     templateUrl: './opisanie.component.html',
     styleUrls: ['./opisanie.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class OpisanieComponent implements OnInit {
 
@@ -16,12 +16,12 @@ export class OpisanieComponent implements OnInit {
   @Input() props: TKartochka = {
     authorId: 0,
     author: 'string',
-    ​​created: 'string',
-    ​​id: 0,
-    ​​imageUrl: 'string',
-    ​​locationId: 0,
+    created: 'string',
+    id: 0,
+    imageUrl: 'string',
+    locationId: 0,
     location: 'string',
-    ​​name: 'string'
+    name: 'string'
   };
 
   ngOnInit(): void {

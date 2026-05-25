@@ -6,7 +6,7 @@ import { TUpdateFilter } from '../../services/kartochki.service';
     selector: 'app-name',
     templateUrl: './name.component.html',
     styleUrls: ['./name.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class NameComponent implements OnInit {
 
