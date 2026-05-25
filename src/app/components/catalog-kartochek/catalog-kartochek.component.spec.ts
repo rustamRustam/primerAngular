@@ -2,10 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CatalogKartochekComponent } from './catalog-kartochek.component';
 
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing'
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing'
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('CatalogKartochekComponent', () => {
   let component: CatalogKartochekComponent;
@@ -15,9 +13,10 @@ describe('CatalogKartochekComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [ CatalogKartochekComponent ]
-    })
+    declarations: [CatalogKartochekComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(CatalogKartochekComponent);

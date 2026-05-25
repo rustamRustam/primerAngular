@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule }   from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi }   from '@angular/common/http';
 
 import { CollectionService } from './services/collection.service';
 import { LoaderService } from './services/loader.service';
@@ -23,36 +23,30 @@ import { VitrinaComponent } from './components/vitrina/vitrina.component';
 import { ButtonComponent, ButtonAddRemove, ButtonClear } from './button/button.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    CatalogKartochekComponent,
-    CollectionKartochekComponent,
-    KartochekaComponent,
-    KartochekaViewComponent,
-    LoadingComponent,
-    NameComponent,
-    NumeraciyaComponent,
-    OpisanieComponent,
-    SelectComponent,
-    VitrinaComponent,
-    ButtonComponent,
-    ButtonAddRemove,
-    ButtonClear
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    CollectionService,
-    LoaderService,
-    AuthorsService,
-    KartochkiService
-  ],
-  bootstrap: [
-    AppComponent
-  ]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        CatalogKartochekComponent,
+        CollectionKartochekComponent,
+        KartochekaComponent,
+        KartochekaViewComponent,
+        LoadingComponent,
+        NameComponent,
+        NumeraciyaComponent,
+        OpisanieComponent,
+        SelectComponent,
+        VitrinaComponent,
+        ButtonComponent,
+        ButtonAddRemove,
+        ButtonClear
+    ],
+    bootstrap: [
+        AppComponent
+    ], imports: [BrowserModule,
+        AppRoutingModule], providers: [
+        CollectionService,
+        LoaderService,
+        AuthorsService,
+        KartochkiService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
