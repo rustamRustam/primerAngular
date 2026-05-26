@@ -38,7 +38,7 @@ export class LoaderService {
   private dbVersion = 1;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = window.location.origin;
+    this.baseUrl = document.baseURI;
     if(!this.baseUrl.endsWith('/')) {
       this.baseUrl += '/';
     }
