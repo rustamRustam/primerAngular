@@ -122,11 +122,22 @@ export class KartochkiService {
   loadData(cb: (data:TDataKartochkas)=>void) {
     this.loader.paintings().then((response)=>{
       if(response) {
-        const data = response as TKartochka[]; // Приводим тип
+        let data = this.doFiltering(response as TKartochka[]); // Приводим тип и фильтруем
+
         const totalCount:number = data.length;
         let maxPage:number = Math.floor(totalCount / this.filters._limit);
         if (totalCount % this.filters._limit > 0) {
           ++maxPage;
+        }
+
+        if(totalCount > this.filters._limit) {
+          const _page = this.filters._page - 1;
+          const start = this.filters._limit * _page;
+          let end = start + this.filters._limit;
+          if(end >= totalCount) {
+            end = totalCount - 1;
+          }
+          data = data.slice(start, end);
         }
 
         data.forEach((kartochka:TKartochka) => {

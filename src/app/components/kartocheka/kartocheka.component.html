@@ -14,8 +14,16 @@
       src="{{ dataKartocheka.imageUrl }}"
       alt="{{ dataKartocheka.name }}"
       class="kartochka-img"
+      (load)="loadedImg = 1"
+      (error)="loadedImg = -1"
     />
   </a>
+  @if(loadedImg === 0) {
+    <div>Идет загрузка</div>
+  }
+  @if(loadedImg === -1) {
+    <div>Ошибка загрузки изображения</div>
+  }
 
   <app-opisanie [props]="dataKartocheka" ></app-opisanie>
 </div>
