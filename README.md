@@ -1,27 +1,173 @@
-# ArtistsPage
+# Artists Page — Галерея картин русских художников
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Веб-приложение для просмотра коллекции картин известных русских художников с возможностью фильтрации и навигации.
 
-## Development server
+## 🚀 Технологии
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular 21** — фреймворк для фронтенда
+- **TypeScript** — типизированный JavaScript
+- **IndexedDB** — локальное хранилище данных в браузере
+- **RxJS** — реактивное программирование
 
-## Code scaffolding
+## 📋 Особенности
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Просмотр коллекции картин с изображениями
+- Фильтрация по автору, локации и поисковому запросу
+- Пагинация результатов
+- Детальный просмотр каждой картины
+- Коллекция произведений
+- Тёмная тема (переключатель)
 
-## Build
+## 🏗️ Структура проекта
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/
+├── app/
+│   ├── components/         # Компоненты страницы
+│   │   ├── catalog-kartochek/   # Каталог картин
+│   │   ├── collection-kartochek/# Коллекция
+│   │   ├── kartocheka-view/     # Просмотр картины
+│   │   ├── kartocheka/          # Карточка картины
+│   │   ├── name/                # Компонент имени
+│   │   └── opisaniye/           # Описание
+│   ├── services/            # Сервисы
+│   │   ├── kartochki.service.ts    # Работа с данными картин
+│   │   ├── loader.service.ts       # IndexedDB и HTTP
+│   │   ├── authors.service.ts      # Авторы
+│   │   └── locations.service.ts    # Локации
+│   ├── ui/                  # Переиспользуемые UI компоненты
+│   │   ├── select-checkbox/       # Чекбокс-выбор
+│   │   ├── select/                # Выпадающий список
+│   │   ├── loading/               # Индикатор загрузки
+│   │   └── numeraciya/            # Пагинация
+│   └── button/              # Кнопки
+├── environments/            # Конфигурации окружения
+└── main.ts                  # Точка входа
+```
 
-## Running unit tests
+## 🛠️ Установка и запуск
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Требования
 
-## Running end-to-end tests
+- Node.js (версия совместимая с Angular 21)
+- npm или yarn
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Установка зависимостей
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Запуск в режиме разработки
+
+```bash
+npm start
+```
+
+Или на порту 4242:
+
+```bash
+npm run start4242
+```
+
+### Сборка для продакшена
+
+```bash
+npm run build
+```
+
+### Тестирование
+
+```bash
+npm test
+```
+
+## 📊 Работа с данными
+
+Приложение использует **IndexedDB** для локального хранения данных:
+
+- **paintings** — картины (изображения, авторы, локации, даты)
+- **authors** — список художников
+- **locations** — локации произведений
+
+Данные инициализируются автоматически при первом запуске приложения.
+
+### Пересоздание базы данных
+
+В `AppComponent` доступна функция `rewriteBD()` для очистки и пересоздания БД:
+
+```typescript
+this.loader.closeDB();
+this.loader.deleteDB();
+this.loader.initDB();
+location.reload();
+```
+
+## 🔧 Фильтрация
+
+Поддерживаемые фильтры:
+
+| Параметр | Тип | Описание |
+|----------|-----|----------|
+| `authorId` | number | ID художника |
+| `locationId` | number | ID локации |
+| `q` | string | Поисковый запрос |
+| `_page` | number | Номер страницы |
+| `_limit` | number | Количество элементов на странице |
+
+## 🎨 Компоненты
+
+### SelectCheckboxComponent
+
+Компонент для выбора стилей с чекбоксами и полосой прокрутки:
+
+```typescript
+@Input() disabled: boolean = false;
+@Input() current: number = -1;
+@Input() variants: TSelectItems = [];
+@Input() updateFilter: TUpdateFilter | null = null;
+@Input() nameFilter: TKeyFilters | null = null;
+```
+
+### SelectComponent
+
+Выпадающий список для выбора вариантов фильтрации.
+
+## 📁 Данные по умолчанию
+
+В `StructureDB` предустановлены данные:
+
+- **10 художников**: Репин, Шишкин, Васнецов, Рублёв, Левитан, Врубель, Куинджи, Айвазовский, Серов, Брюллов
+- **20 картин** с изображениями и метаинформацией
+- **2 локации**
+
+## 🌐 Конфигурация
+
+### Базовый URL
+
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  production: false
+};
+```
+
+### Base href
+
+```html
+<base href="/">
+```
+
+Получить значение в коде:
+
+```typescript
+const baseHref = document.querySelector('base')?.href;
+```
+
+## 📝 Лицензия
+
+Проект создан в учебных целях.
+
+---
+
+**NLP-Core-Team**
