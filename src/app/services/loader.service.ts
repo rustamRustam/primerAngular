@@ -11,7 +11,7 @@ export type TFuncResponse<T> = (_r:TResultResponse<T> )=>void;
 })
 export class LoaderService {
   // private baseUrl:string = "https://test-front.framework.team";
-  private baseUrl:string = "http://localhost:4242/";
+  private baseUrl:string;
 
   // constructor(private http: HttpClient){}
 
@@ -38,6 +38,10 @@ export class LoaderService {
   private dbVersion = 1;
 
   constructor(private http: HttpClient) {
+    this.baseUrl = window.location.origin;
+    if(!this.baseUrl.endsWith('/')) {
+      this.baseUrl += '/';
+    }
     this.initDB();
   }
 
