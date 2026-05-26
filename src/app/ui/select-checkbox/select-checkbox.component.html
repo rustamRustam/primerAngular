@@ -1,0 +1,21 @@
+<div class="select-checkbox-container">
+  <h3 class="select-checkbox-title">{{title}}</h3>
+  <div class="select-checkbox-wrapper">
+    <div class="checkbox-list">
+      @for (variant of variants; track variant) {
+        <div class="checkbox-item">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [checked]="current === variant.id"
+              [disabled]="disabled"
+              (change)="onCheckboxChange(variant.id,$event.target.checked)"
+              class="checkbox-input"
+            />
+            <span class="checkbox-text">{{ variant.idName }}</span>
+          </label>
+        </div>
+      }
+    </div>
+  </div>
+</div>

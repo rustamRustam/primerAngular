@@ -15,13 +15,14 @@ import { TNumeraciya, NumeraciyaComponent } from '../../ui/numeraciya/numeraciya
 import { TSelectItem, TSelectItems, SelectComponent } from '../../ui/select/select.component';
 import { NameComponent } from "../name/name.component";
 import { VitrinaComponent } from "../vitrina/vitrina.component";
+import { SelectCheckboxComponent } from "src/app/ui/select-checkbox/select-checkbox.component";
 
 @Component({
     selector: 'app-catalog-kartochek',
     templateUrl: './catalog-kartochek.component.html',
     styleUrls: ['./catalog-kartochek.component.scss'],
     standalone: true,
-    imports: [NameComponent, SelectComponent, NumeraciyaComponent, VitrinaComponent]
+    imports: [NameComponent, /*SelectComponent,*/ NumeraciyaComponent, VitrinaComponent, SelectCheckboxComponent]
 })
 export class CatalogKartochekComponent implements OnInit {
 

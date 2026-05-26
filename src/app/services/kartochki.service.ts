@@ -82,7 +82,6 @@ export class KartochkiService {
   }
 
   updateFilter(_name:TKeyFilters, _value:TValueFilters ):boolean {
-
     if (_name === null || this.filters[_name] === _value) {
       return false;
     }

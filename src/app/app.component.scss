@@ -34,14 +34,18 @@
   }
 }
 
+.container-heading .heading {
+  color: #14376E;
+  margin: 0;
+  padding: 0 10px;
+}
 .container-logo {
-  height: 60px;
+  height: 40px;
   aspect-ratio: 1/1;
   background-image: url("../assets/image_mini.png");
   background-repeat: no-repeat;
   background-size: contain;
   padding: 2px;
-  border: solid 1px #4a4a4a;
   border-radius: 4px;
 }
 
@@ -59,6 +63,7 @@
     color: white;
     padding: 1rem 0;
     border-radius: 8px;
+    padding-right: 18px;
 
     display: flex;
     justify-content: space-between;

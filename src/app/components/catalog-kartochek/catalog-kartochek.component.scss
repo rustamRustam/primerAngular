@@ -24,6 +24,17 @@
 
 }
 
+.paths {
+  display: flex;
+  gap: 24px;
+  .path-left {
+    min-width: 228px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .filters>.filter-item {
     display: block;
