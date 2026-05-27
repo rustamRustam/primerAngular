@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 
 import {
   KartochkiService,
@@ -22,9 +22,9 @@ import { SelectCheckboxComponent } from "src/app/ui/select-checkbox/select-check
     templateUrl: './catalog-kartochek.component.html',
     styleUrls: ['./catalog-kartochek.component.scss'],
     standalone: true,
-    imports: [NameComponent, /*SelectComponent,*/ NumeraciyaComponent, VitrinaComponent, SelectCheckboxComponent]
+    imports: [NameComponent, SelectComponent, NumeraciyaComponent, VitrinaComponent, SelectCheckboxComponent]
 })
-export class CatalogKartochekComponent implements OnInit {
+export class CatalogKartochekComponent implements OnInit, OnDestroy {
 
   dataAuthors: TAuthor[] = [];
   dataLocations: TLocation[] = [];
@@ -156,6 +156,26 @@ export class CatalogKartochekComponent implements OnInit {
      private kartochki: KartochkiService
   ){
     this.updateFilter = this.updateFilter.bind(this);
+    this.change_less1024 = this.change_less1024.bind(this);
+    this.constructorOrientation();
+  }
+
+  ngOnDestroy(): void {
+    this.width1024?.removeEventListener('change', this.change_less1024)
+  }
+  
+  less1024 = signal<boolean | undefined>(undefined);
+  change_less1024(event:MediaQueryListEvent):any{
+    this.less1024.set(event.matches);
+  }
+
+  private width1024: MediaQueryList | undefined;
+  constructorOrientation() {
+    this.width1024 = window.matchMedia('(width <= 1024px)');
+    if(this.width1024) {
+      this.width1024.addEventListener('change', this.change_less1024);
+      this.less1024.set(this.width1024.matches);
+    }
   }
 
 }

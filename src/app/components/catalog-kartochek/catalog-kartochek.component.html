@@ -1,5 +1,5 @@
 <div class="container-CatatologKartochek" >
-  <!-- @if (filters) {
+  @if (filters && less1024()) {
     <div class="filters" >
       <app-name class="filter-item"
         [disabled]="dataTotalCount === -1"
@@ -21,10 +21,10 @@
         nameFilter="locationId"
       ></app-select>
     </div>
-  } -->
+  }
   <div class="paths">
     
-    @if (filters) {
+    @if (filters && !less1024()) {
       <div class="path-left">
         <div class="paths-title"><h2>Сортировка</h2></div>
         <app-name class="filter-item"

@@ -34,6 +34,26 @@
   }
 }
 
+.heading {
+  font-size: 36px;
+}
+
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .heading {
+    font-size: 20px;
+  }
+}
+@media (max-width: 420px) {
+  .heading {
+    font-size: 16px;
+  }
+}
+
 .container-heading .heading {
   color: #14376E;
   margin: 0;
